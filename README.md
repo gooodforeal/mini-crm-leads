@@ -15,6 +15,38 @@
 - **Взвешенное распределение**: настройка весов операторов для каждого источника для гибкого распределения нагрузки
 - **Статистика**: получение статистики распределения обращений по источникам и операторам
 
+## 📁 Структура проекта
+
+```
+mini-crm-leads/
+├── src/
+│   ├── api/              # API роутеры
+│   │   ├── base.py       # Базовый роутер
+│   │   └── v1/           # API v1 endpoints
+│   ├── core/             # Ядро приложения
+│   │   ├── base_model.py      # Базовая модель SQLAlchemy
+│   │   ├── base_repository.py # Базовый репозиторий
+│   │   ├── config.py          # Конфигурация
+│   │   ├── database.py        # Подключение к БД
+│   │   ├── exceptions.py      # Обработка исключений
+│   │   ├── lifespan.py        # Жизненный цикл приложения
+│   │   ├── middleware.py      # Middleware (CORS и т.д.)
+│   │   └── schemas.py         # Базовые схемы
+│   ├── domains/          # Доменная логика
+│   │   ├── contacts/     # Домен обращений
+│   │   ├── leads/        # Домен лидов
+│   │   ├── operators/    # Домен операторов
+│   │   └── sources/      # Домен источников
+│   ├── utils/            # Утилиты
+│   └── main.py           # Точка входа
+├── tests/                # Тесты
+├── migrations/           # Миграции Alembic
+├── docker-compose.yaml   # Docker Compose конфигурация
+├── Dockerfile            # Docker образ
+├── pyproject.toml        # Зависимости проекта
+└── README.md             # Документация
+```
+
 ## 🏗️ Архитектура базы данных
 
 ### ER-диаграмма
@@ -278,38 +310,6 @@ docker-compose exec app pytest
 
 # Локально
 pytest
-```
-
-## 📁 Структура проекта
-
-```
-mini-crm-leads/
-├── src/
-│   ├── api/              # API роутеры
-│   │   ├── base.py       # Базовый роутер
-│   │   └── v1/           # API v1 endpoints
-│   ├── core/             # Ядро приложения
-│   │   ├── base_model.py      # Базовая модель SQLAlchemy
-│   │   ├── base_repository.py # Базовый репозиторий
-│   │   ├── config.py          # Конфигурация
-│   │   ├── database.py        # Подключение к БД
-│   │   ├── exceptions.py      # Обработка исключений
-│   │   ├── lifespan.py        # Жизненный цикл приложения
-│   │   ├── middleware.py      # Middleware (CORS и т.д.)
-│   │   └── schemas.py         # Базовые схемы
-│   ├── domains/          # Доменная логика
-│   │   ├── contacts/     # Домен обращений
-│   │   ├── leads/        # Домен лидов
-│   │   ├── operators/    # Домен операторов
-│   │   └── sources/      # Домен источников
-│   ├── utils/            # Утилиты
-│   └── main.py           # Точка входа
-├── tests/                # Тесты
-├── migrations/           # Миграции Alembic
-├── docker-compose.yaml   # Docker Compose конфигурация
-├── Dockerfile            # Docker образ
-├── pyproject.toml        # Зависимости проекта
-└── README.md             # Документация
 ```
 
 ## 🔧 Конфигурация
